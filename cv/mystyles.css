@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    font-size: 1.1em;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.sidebar p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.skills .skill-bar {
+    margin-bottom: 15px;
+}
+
+.skills .bar {
+    width: 100%;
+    background-color: #555;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skills .fill {
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.content {
+    width: 70%;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px; 
+    object-fit: cover; 
+}
+
+.header h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+.header .title {
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.content h2 {
+    color: #333;
+    font-size: 1.3em;
+    border-bottom: 2px solid #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.content p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    line-height: 1.6;
+}

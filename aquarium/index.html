@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Hồ cá vui nhộn</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
+<body>
+    <audio id="backgroundMusic" loop>
+        <source src="./audio/buong.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="changeBackground" class="button">Chuyển đổi nền</button>
+    <button id="toggleMusic" class="button">Bật/Tắt Nhạc</button>
+
+    <div id="content">
+        <div id="shark" class="swimmer">
+            <img src="images/shark.png" alt="Cá mập">
+        </div>
+        <div id="goldFishSchool" class="swimmer">
+            <img src="images/goldFishSchool.png" alt="Đàn cá vàng">
+        </div>
+        <div id="turtle" class="swimmer">
+            <img src="images/turtle.png" alt="Con rùa">
+        </div>
+        <div id="diver1" class="swimmer">
+            <img src="images/diver1.png" alt="Người lặn 1">
+        </div>
+        <div id="diver2" class="swimmer">
+            <img src="images/diver2.png" alt="Người lặn 2">
+        </div>
+        <div id="diver3" class="swimmer">
+            <img src="images/diver3.png" alt="Người lặn 3">
+        </div>
+    </div>
+
+    <script>
+        const backgrounds = ['images/backgroud1.jpg', 'images/backgroud2.jpg', 'images/backgroud3.jpg', 'images/backgroud4.jpg'];
+        let currentBackground = 0;
+
+        document.getElementById('changeBackground').addEventListener('click', function() {
+            currentBackground = (currentBackground + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url('${backgrounds[currentBackground]}')`;
+        });
+
+        const music = document.getElementById('backgroundMusic');
+        document.getElementById('toggleMusic').addEventListener('click', function() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        });
+
+        function createSwimmer(elementId, horizontalSpeed, verticalSpeed) {
+            const swimmer = document.getElementById(elementId);
+            let horizontalPosition = Math.random() * (window.innerWidth - swimmer.offsetWidth);
+            let verticalPosition = Math.random() * (window.innerHeight - swimmer.offsetHeight);
+            let horizontalDirection = 1;
+            let verticalDirection = 1;
+
+            swimmer.style.left = horizontalPosition + 'px';
+            swimmer.style.top = verticalPosition + 'px';
+
+            function animate() {
+                horizontalPosition += horizontalDirection * horizontalSpeed;
+                verticalPosition += verticalDirection * verticalSpeed;
+
+                swimmer.style.left = horizontalPosition + 'px';
+                swimmer.style.top = verticalPosition + 'px';
+
+                if (horizontalPosition >= window.innerWidth - swimmer.offsetWidth || horizontalPosition <= 0) {
+                    horizontalDirection *= -1;
+                    swimmer.style.transform = horizontalDirection === 1 ? 'scaleX(1)' : 'scaleX(-1)';
+                }
+
+                if (verticalPosition >= window.innerHeight - swimmer.offsetHeight || verticalPosition <= 0) {
+                    verticalDirection *= -1;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+            
+        
+        }
+       
+        function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const img = document.createElement('img');
+        img.src = 'images/faintSchool.png';
+        img.alt = 'Bong bóng';
+        const size = 100 + Math.random() * 100;
+        img.style.width = size + 'px';
+        bubble.appendChild(img);
+        document.getElementById('content').appendChild(bubble);
+        let verticalPosition = window.innerHeight;
+        const horizontalPosition = Math.random() * window.innerWidth;
+
+        bubble.style.left = horizontalPosition + 'px';
+        bubble.style.top = verticalPosition + 'px';
+
+        const verticalSpeed = 1 + Math.random() * 2;
+
+        function animate() {
+        verticalPosition -= verticalSpeed;
+        bubble.style.top = verticalPosition + 'px';
+
+        if (verticalPosition < -bubble.offsetHeight) {
+        verticalPosition = window.innerHeight;
+        bubble.style.left = Math.random() * window.innerWidth + 'px';
+        }
+
+        requestAnimationFrame(animate);
+        }
+
+        animate();
+        }
+
+        setInterval(createBubble, 900);
+        createSwimmer('shark', 4, 2);
+        createSwimmer('goldFishSchool', 1, 0.5);
+        createSwimmer('turtle', 1.5, 0.5);
+        createSwimmer('diver1', 2, 1);
+        createSwimmer('diver2', 3, 2);
+        createSwimmer('diver3', 1.5, 1);
+
+    </script>
+</body>
+</html>

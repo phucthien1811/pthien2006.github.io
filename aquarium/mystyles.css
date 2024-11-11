@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-image: url('./images/backgroud1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.swimmer {
+    position: absolute;
+}
+
+#shark img {
+    width: 350px;
+}
+
+#goldFishSchool img {
+    width: 150px;
+}
+
+#turtle img {
+    width: 300px;
+}
+
+#diver1 img,
+#diver2 img,
+#diver3 img {
+    width: 233px;
+}
+
+.bubble {
+    position: absolute;
+    z-index: 1;
+}
+
+
+.button {
+    position: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+    margin:0;
+}
+
+#changeBackground {
+   
+    top: 20px;
+    left: 20px;
+}
+
+#toggleMusic {
+
+    top: 20px;
+    left: 140px;
+}
